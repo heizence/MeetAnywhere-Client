@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350sp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/style_dialog_confirm"
+    android:paddingLeft="20sp"
+    android:paddingTop="30sp"
+    android:paddingRight="20sp"
+    android:paddingBottom="30sp">
+
+    <TextView
+        android:id="@+id/dialogSignupTerms_Contents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="MeetAnywhere 계약"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="계속하려면 필수 항목에 동의하세요"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSignupTerms_Contents" />
+
+    <!--********** 개인정보 처리방침 및 서비스약관 동의항목 **********-->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <CheckBox
+            android:id="@+id/dialogSignupTerms_Contents_checkbox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- 약관 및 방침 동의 안내 텍스트 -->
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flexboxLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userNameInputLayout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='본인은 MeetAnywhere 의 '
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='개인정보 처리방침'
+                android:textColor="@color/blue_001"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 및 "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="서비스 약관"
+                android:textColor="@color/blue_001"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="에 동의합니다."
+                android:textColor="@color/black" />
+        </com.google.android.flexbox.FlexboxLayout>
+
+    </LinearLayout>
+
+    <!--********** 데이터 수집 및 사용 동의항목 **********-->
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <CheckBox
+            android:id="@+id/dialogSignupTerms_Contents_checkbox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- 약관 및 방침 동의 안내 텍스트 -->
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flexboxLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userNameInputLayout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='본인은 MeetAnywhere 의 '
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='데이터 수집'
+                android:textColor="@color/blue_001"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 및 "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사용 동의"
+                android:textColor="@color/blue_001"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="에 동의합니다."
+                android:textColor="@color/black" />
+        </com.google.android.flexbox.FlexboxLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/dialogSignupTerms_Contents_selectAllBtn"
+        android:layout_width="0dp"
+        android:layout_height="50sp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/blue_001"
+        android:onClick="moveToJoinConference"
+        android:text="모두 선택"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <Button
+        android:id="@+id/dialogSignupTerms_Contents_cancelBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/gray_001"
+        android:onClick="moveToJoinConference"
+        android:text="취소"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSignupTerms_Contents_selectAllBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <LinearLayout
+        android:id="@+id/bottom_sheet_dialog_conf_chat_messages_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="32sp"
+        android:paddingTop="10sp"
+        android:paddingRight="32sp"
+        android:paddingBottom="20sp">
+
+        <!--********** 상단 모달 닫기 drag 버튼 **********-->
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="100sp"
+            android:layout_height="7sp"
+            android:layout_gravity="center"
+            android:background="#000000"
+            android:orientation="horizontal" />
+
+        <!--********** 헤더 **********-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- 닫기 버튼 -->
+            <ImageView
+                android:id="@+id/bottom_sheet_dialog_conf_chat_messages_close_btn"
+                android:layout_width="25sp"
+                android:layout_height="25sp"
+                android:layout_gravity="center"
+                android:enabled="false"
+                android:src="@drawable/ic_close_btn"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/bottom_sheet_dialog_conf_chat_message_header_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="채팅"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+            <!-- 알림 설정 버튼 -->
+            <ImageView
+                android:id="@+id/bottom_sheet_dialog_conf_chat_messages_alarm_btn"
+                android:layout_width="25sp"
+                android:layout_height="25sp"
+                android:layout_gravity="center"
+                android:enabled="false"
+                android:src="@drawable/ic_notification_on"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/conf_chat_messages_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:paddingBottom="20sp" />
+        </LinearLayout>
+
+        <!--********** 채팅 입력 영역 **********-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="60sp"
+                android:layout_marginEnd="10sp"
+                android:layout_weight="1"
+                android:hint="채팅 입력"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passwordInputLabel">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/bottom_sheet_dialog_conf_chat_messages_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- 채팅 전송 버튼 -->
+            <ImageView
+                android:id="@+id/bottom_sheet_dialog_conf_chat_messages_sendBtn"
+                android:alpha="0.4"
+                android:clickable="true"
+                android:layout_width="35sp"
+                android:layout_height="35sp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_send_button" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

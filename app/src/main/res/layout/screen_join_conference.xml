@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/joinConferenceLayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="32sp"
+    android:paddingLeft="32sp"
+    android:paddingRight="32sp">
+
+    <TextView
+        android:id="@+id/joinConferenceHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="참가"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 회의 ID 입력창 -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confIdInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="48dp"
+        android:hint="회의 ID 입력"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/joinConferenceHeader">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/conferenceIdInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- 참가자 이름 입력창 -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/userNameInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="10dp"
+        android:hint="이름 입력"
+        app:layout_constraintTop_toBottomOf="@+id/confIdInputLayout"
+        tools:layout_editor_absoluteX="48dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- 약관 및 방침 동의 안내 텍스트 -->
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/joinConferenceTermsTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:flexWrap="wrap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameInputLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='"참가"를 클릭하면 '
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='서비스 약관'
+            android:textColor="@color/blue_001"
+            android:textStyle="bold"
+            android:onClick="showServiceTerms"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 및 "
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개인정보 처리방침"
+            android:textColor="@color/blue_001"
+            android:textStyle="bold"
+            android:onClick="showPolicy"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="에 동의하게 됩니다."
+            android:textColor="@color/black"/>
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <Button
+        android:id="@+id/joinConferenceBtn"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/gray_001"
+        android:text="참가"
+        android:textSize="20sp"
+        android:onClick="join"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/joinConferenceTermsTxt" />
+</LinearLayout>

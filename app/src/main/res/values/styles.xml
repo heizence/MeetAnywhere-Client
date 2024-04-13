@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme_CustomBottomSheetDialog" parent="Theme.Design.BottomSheetDialog">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimAmount">0.0</item>
+    </style>
+    <style name="conf_exit_btn_not_transparent">
+        <item name="android:background">@drawable/style_conf_exit_btn_not_transparent</item>
+    </style>
+    <style name="conf_exit_btn_transparent">
+        <item name="android:background">@drawable/style_conf_exit_btn_transparent</item>
+    </style>
+</resources>

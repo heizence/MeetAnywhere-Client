@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_dialog_conf_participants_layout0"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    app:behavior_hideable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:id="@+id/bottom_sheet_dialog_conf_participants_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="32sp"
+        android:paddingTop="10sp"
+        android:paddingRight="32sp"
+        android:paddingBottom="32sp"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="100sp"
+            android:layout_height="7sp"
+            android:layout_gravity="center"
+            android:background="#000000"
+            android:orientation="horizontal" />
+
+        <!--********** 헤더 **********-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- 닫기 버튼 -->
+            <ImageView
+                android:id="@+id/bottom_sheet_dialog_conf_participants_close_btn"
+                android:layout_width="25sp"
+                android:layout_height="25sp"
+                android:layout_gravity="center"
+                android:enabled="false"
+                android:src="@drawable/ic_close_btn"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/bottom_sheet_dialog_conf_participants_participants_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="참가자(N)"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+            <!-- 가운데 정렬을 위한 태그 -->
+            <ImageView android:layout_width="25sp"
+                android:layout_height="25sp"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/conf_participants_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="30sp"
+            android:paddingBottom="30sp" />
+    </LinearLayout>
+</LinearLayout>

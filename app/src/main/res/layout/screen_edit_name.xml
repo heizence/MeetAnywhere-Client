@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/editNameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="32sp"
+    android:paddingLeft="32sp"
+    android:paddingRight="32sp">
+
+    <TextView
+        android:id="@+id/editNameHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이름 변경"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/userIdInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="90dp"
+        android:hint="이름 입력"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNameHeader">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/editNameBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        android:text="변경"
+        android:textSize="20sp"
+        android:backgroundTint="@color/gray_001"
+        android:enabled="false"
+        android:onClick="editName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userIdInputLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/deleteAccountLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="32sp"
+    android:paddingLeft="32sp"
+    android:paddingRight="32sp">
+
+    <TextView
+        android:id="@+id/deleteAccountHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="계정 삭제"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/deleteAccountDeleteBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="계정 삭제하기"
+        android:textColor="@color/red_001"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:onClick="openDeleteAccountModal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteAccountHeader" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

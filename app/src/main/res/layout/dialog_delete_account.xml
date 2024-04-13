@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350sp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/style_dialog_confirm"
+    android:paddingLeft="20sp"
+    android:paddingTop="30sp"
+    android:paddingRight="20sp"
+    android:paddingBottom="30sp">
+
+    <TextView
+        android:id="@+id/dialogDeleteAccount_Contents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="계정 삭제"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="이 계정을 삭제하시겠습니까?"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogDeleteAccount_Contents" />
+
+
+    <Button
+        android:id="@+id/dialogDeleteAccount_Contents_confirmBtn"
+        android:layout_width="0dp"
+        android:layout_height="50sp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/blue_001"
+        android:onClick="moveToJoinConference"
+        android:text="계정 삭제"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/dialogDeleteAccount_Contents_cancelBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/gray_001"
+        android:onClick="moveToJoinConference"
+        android:text="취소"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogDeleteAccount_Contents_confirmBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

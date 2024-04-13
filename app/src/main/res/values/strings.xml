@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">MeetAnywhere</string>
+
+    <!--********** sharedPreference store key strings **********-->
+    <string name="sharedPreferenceMain">sharedPreferenceMain</string>
+    <string name="store_app_token">store_app_token</string>
+    <string name="store_U_Id">store_U_Id</string>
+    <string name="store_U_Email">store_U_Email</string>
+    <string name="store_U_Name">store_U_Name</string>
+    <string name="store_U_ProfileImg">store_U_ProfileImg</string>
+    <string name="store_is_camera_permission_asked">store_is_camera_permission_asked</string>
+
+    <!--********** normal key strings **********-->
+    <string name="is_signedin">is_signedin</string>
+
+    <!--********** Broadcast function key strings **********-->
+    <string name="userName">userName</string>
+    <string name="conferenceName">conferenceName</string>
+    <string name="liveTitle">liveTitle</string>
+    <string name="liveStartedAt">liveStartedAt</string>
+    <string name="thumbnailImage">thumbnailImage</string>
+    <string name="isUsingFrontCamera">isUsingFrontCamera</string>
+    <string name="conferenceId">conferenceId</string>
+    <string name="conferencePassword">conferencePassword</string>
+    <string name="isHost">isHost</string>
+    <string name="hostName">hostName</string>
+    <string name="newHostName">newHostName</string>
+    <string name="newHostSocketId">newHostSocketId</string>
+    <string name="profileImg">profileImg</string>
+    <string name="isMicOn">isMicOn</string>
+    <string name="isVideoOn">isVideoOn</string>
+    <string name="hostProfileImg">hostProfileImg</string>
+    <string name="hostSocketId">hostSocketId</string>
+    <string name="hostInfo">hostInfo</string>
+    <string name="participantName">participantName</string>
+    <string name="participantSocketId">participantSocketId</string>
+    <string name="numberOfParticipants">numberOfParticipants</string>
+    <string name="peerConnectionID">peerConnectionID</string>
+    <string name="oldPeerConnectionID">oldPeerConnectionID</string>
+    <string name="chatMessage">chatMessage</string>
+    <string name="senderUserId">senderUserId</string>
+    <string name="senderSocketId">senderSocketId</string>
+    <string name="newParticipantSocketId">newParticipantSocketId</string>
+    <string name="senderName">senderName</string>
+    <string name="senderProfileImg">senderProfileImg</string>
+    <string name="chatMessageContents">chatMessageContents</string>
+    <string name="sdp">sdp</string>
+    <string name="from">from</string>
+    <string name="to">to</string>
+    <string name="id">id</string>
+    <string name="isSharingOn">isSharingOn</string>
+    <string name="label">label</string>
+    <string name="type">type</string>
+    <string name="data">data</string>
+    <string name="candidate">candidate</string>
+    <string name="videoRatio">videoRatio</string>
+
+    <!--********** Socket event names **********-->
+    <string name="connect">connect</string>
+    <string name="disconnect">disconnect</string>
+    <string name="ready">ready</string>
+    <string name="create_new_conference">create new conference</string>
+    <string name="conference_created">conference created</string>
+    <string name="request_join">request join</string>
+    <string name="is_connected">isConnected</string>
+    <string name="connected_to_peer">connected to peer</string>
+    <string name="participant_joined">participant joined</string>
+    <string name="new_chat_message">new chat message</string>
+    <string name="offer">offer</string>
+    <string name="answer">answer</string>
+    <string name="offer_screenShare">offer_screenShare</string>
+    <string name="answer_screenShare">answer_screenShare</string>
+    <string name="iceCandidate">iceCandidate</string>
+    <string name="participant_left">participant left</string>
+    <string name="end_conference">end conference</string>
+    <string name="switch_video_status">switch video status</string>
+    <string name="video_status">videoStatus</string>
+    <string name="switch_mic_status">switch mic status</string>
+    <string name="mic_status">micStatus</string>
+    <string name="host_left">host left</string>
+    <string name="host_disconnected">host disconnected</string>
+    <string name="startScreenSharing">startScreenSharing</string>
+    <string name="stopScreenSharing">stopScreenSharing</string>
+</resources>

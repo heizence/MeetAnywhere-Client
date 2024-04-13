@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signupFormLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="32sp"
+    android:paddingLeft="32sp"
+    android:paddingRight="32sp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--********** 이메일(아이디) 입력 input **********-->
+    <TextView
+        android:id="@+id/nameInputLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signupFormInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="10dp"
+        android:hint="이름 입력"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameInputLabel">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signupFormNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--********** 비밀번호 입력 input **********-->
+
+    <TextView
+        android:id="@+id/passwordInputLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Password"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupFormInputLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signupFormPwInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="10dp"
+        android:hint="비밀번호 입력"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInputLabel">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signupFormPwInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:textSize="20sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--********** 비밀번호 확인 input **********-->
+
+    <TextView
+        android:id="@+id/passwordCheckInputLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Check Password"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupFormPwInputLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signupFormPwCheckInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="10dp"
+        android:hint="비밀번호 확인"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordCheckInputLabel">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signupFormPwCheckInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--********** 가입하기 버튼 **********-->
+    <Button
+        android:id="@+id/signupFormBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/gray_001"
+        android:onClick="signup"
+        android:text="가입하기"
+        android:enabled="false"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupFormPwCheckInputLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

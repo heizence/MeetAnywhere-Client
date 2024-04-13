@@ -1,0 +1,8 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <!-- solid : 버튼 몸체, stroke : 겉 테두리, corner : 모서리 부분 -->
+            <solid android:color="@color/red_001" />
+        </shape>
+    </item>
+</selector>

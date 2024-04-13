@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/conferenceRoomLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context=".Activities.conference_room">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--********** 회의 화면 표시 **********-->
+        <com.example.meetanywhere.Modules.CustomViewPager
+        android:id="@+id/conferenceRoomPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+        <!--********** 상단 header **********-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conferenceRoomHeader"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/gray_001"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="15sp">
+
+            <ImageView
+                android:id="@+id/conferenceRoomSoundBtn"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:src="@drawable/ic_sound_on"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/conferenceRoomInfoBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="회의 정보"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    tools:layout_editor_absoluteX="67dp"
+                    tools:layout_editor_absoluteY="15dp" />
+
+                <ImageView
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/ic_arrow_drop_down_01"
+                    tools:layout_editor_absoluteX="168dp"
+                    tools:layout_editor_absoluteY="3dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/conferenceRoomExitBtn"
+                android:layout_width="65sp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/style_conf_exit_btn_not_transparent"
+                android:gravity="center"
+                android:padding="5sp"
+                android:text="종료"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--********** 하단 메뉴 탭 **********-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conferenceRoomBottomTab"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="@color/gray_001"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/linearLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/conferenceRoomMicLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/conferenceRoomMicBtn"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:src="@drawable/ic_mic_on" />
+
+                    <TextView
+                        android:id="@+id/conferenceRoomMicBtnTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="음소거"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/conferenceRoomVideoLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/conferenceRoomVideoBtn"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:src="@drawable/ic_video_on" />
+
+                    <TextView
+                        android:id="@+id/conferenceRoomVideoBtnTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="비디오 중지"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/conferenceRoomParticipantsLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/conferenceRoomParticipantsBtn"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:src="@drawable/ic_participants" />
+
+                    <TextView
+                        android:id="@+id/conferenceRoomParticipantsBtnTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="참가자"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/conferenceRoomMessageLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/conferenceRoomMessageBtn"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:src="@drawable/ic_chat_message" />
+
+                    <TextView
+                        android:id="@+id/conferenceRoomMessageBtnTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="채팅"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/conferenceRoomShareLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/conferenceRoomShareBtn"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:src="@drawable/ic_share" />
+
+                    <TextView
+                        android:id="@+id/conferenceRoomShareBtnTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="공유"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 채팅 red dot -->
+            <TextView
+                android:id="@+id/conferenceRoomChatRedDot"
+                android:layout_width="23sp"
+                android:layout_height="23sp"
+                android:background="@drawable/style_red_dot"
+                android:gravity="center"
+                android:text="+99"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.73"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout10"
+                app:layout_constraintVertical_bias="0.01999998" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+    <!--********** 회의 종료하기 dialog **********-->
+    <include
+        android:id="@+id/conferenceRoom_exit_btns"
+        layout="@layout/dialog_exit_conference"
+        android:visibility="invisible" />
+    <!--********** 새 호스트 할당 dialog **********-->
+    <include
+        android:id="@+id/conferenceRoom_assign_new_host"
+        layout="@layout/dialog_assign_new_host"
+        android:visibility="invisible" />
+    <!--********** 회의 정보 bottomSheet **********-->
+    <include
+        android:id="@+id/conferenceRoom_info_BottomSheet"
+        layout="@layout/bottom_sheet_conf_info" />
+    <!--********** 참가자 목록 bottomSheet **********-->
+    <include
+        android:id="@+id/conferenceRoom_participants_BottomSheet"
+        layout="@layout/bottom_sheet_dialog_conf_participants" />
+    <!--********** 채팅 목록 bottomSheet **********-->
+    <include
+        android:id="@+id/conferenceRoom_chat_messages_BottomSheet"
+        layout="@layout/bottom_sheet_dialog_conf_chat_messages" />
+    <!--********** 화면 공유하기 옵션 dialog  **********-->
+    <include
+        android:id="@+id/conferenceRoom_share_screen_options"
+        layout="@layout/dialog_sharing_options" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

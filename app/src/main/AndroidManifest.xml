@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.meetanywhere">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MeetAnywhere"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+        <!--********** Services **********-->
+        <service
+            android:name=".Services.ScreenCaptureNotification"
+            android:enabled="true"
+            android:foregroundServiceType="mediaProjection" />
+
+        <!--********** Activities **********-->
+        <activity
+            android:name=".Activities.main_activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!--********** Android App Link **********-->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="www.meetanywhere.com"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="www.meetanywhere.com"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Activities.join_conference"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".Activities.signup_verify_email"></activity>
+        <activity android:name=".Activities.signup_check_code"></activity>
+        <activity android:name=".Activities.signup_form"></activity>
+        <activity android:name=".Activities.signin"></activity>
+        <activity
+            android:name=".Activities.signedin_main"
+            android:exported="true">
+        </activity>
+        <activity android:name=".Activities.delete_account"></activity>
+        <activity android:name=".Activities.edit_name"></activity>
+        <activity android:name=".Activities.reissue_password"></activity>
+        <activity android:name=".Activities.update_password"></activity>
+        <activity android:name=".Activities.conference_room"></activity>
+    </application>
+
+    <!--********** features **********-->
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!--********** permissions **********-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="ANDROID.PERMISSION.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission
+        android:name="android.permission.CAPTURE_VIDEO_OUTPUT"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ADJUST_PAN" />
+</manifest>

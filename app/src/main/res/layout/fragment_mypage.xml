@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentMyPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="32sp"
+    android:paddingLeft="32sp"
+    android:paddingRight="32sp">
+
+    <TextView
+        android:id="@+id/fragmentMyPageMainHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="마이페이지"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--********** 각 메뉴 선택 항목 **********-->
+
+    <!-- 프로필 사진 변경 -->
+    <LinearLayout
+        android:id="@+id/fragmentMyPageEditProfileMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/style_mypage_each_menu"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="onClickEditPassword"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMyPageMainHeader">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="프로필 사진"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <!-- 프로필 사진 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fragmentMyPageProfileImgCardView"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            app:cardBackgroundColor="@color/gray_001"
+            app:cardCornerRadius="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentMyPageMainHeader">
+            <ImageView
+                android:id="@+id/fragmentMyPageProfileImg"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:clickable="true"
+                android:scaleType="centerCrop"
+             />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right_01" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragmentMyPageEditAccountMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_mypage_each_menu"
+        android:clickable="true"
+        android:gravity="center"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMyPageEditProfileMenu">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="계정"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/fragmentMyPageAccountTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test@test.com"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right_01" />
+    </LinearLayout>
+
+    <!-- 이름 변경 -->
+    <LinearLayout
+        android:id="@+id/fragmentMyPageEditNameMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_mypage_each_menu"
+        android:clickable="true"
+        android:gravity="center"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMyPageEditAccountMenu">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="이름"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/fragmentMyPageNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="홍길동"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right_01" />
+    </LinearLayout>
+
+    <!-- 비밀번호 업데이트 -->
+    <LinearLayout
+        android:id="@+id/fragmentMyPageUpdatePasswordMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_mypage_each_menu"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="onClickLogout"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMyPageEditNameMenu">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="비밀번호 업데이트"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right_01" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fragmentMyPageSignOutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="로그아웃"
+        android:textColor="@color/red_001"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:onClick="onClickLogout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMyPageUpdatePasswordMenu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

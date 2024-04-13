@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signupCheckCodeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="32sp"
+    android:paddingTop="32sp"
+    android:paddingRight="32sp">
+
+    <TextView
+        android:id="@+id/signupCheckCodeHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인증"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="이메일에서 코드 확인"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupCheckCodeHeader" />
+
+    <TextView
+        android:id="@+id/signupCheckCodeGuideText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="이메일 주소 test@test.com 에 전송된 인증 코드를 입력하세요."
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <!--********** 인증코드 입력 textview **********-->
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupCheckCodeGuideText">
+
+        <EditText
+            android:id="@+id/signupCheckCodeCodeTxt1"
+            android:layout_width="30sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/style_text_bottom_border_line"
+            android:cursorVisible="true"
+            android:orientation="horizontal"
+            android:padding="15sp" />
+
+        <EditText
+            android:id="@+id/signupCheckCodeCodeTxt2"
+            android:layout_width="30sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/style_text_bottom_border_line"
+            android:cursorVisible="true"
+            android:orientation="horizontal"
+            android:padding="15sp" />
+
+        <EditText
+            android:id="@+id/signupCheckCodeCodeTxt3"
+            android:layout_width="30sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/style_text_bottom_border_line"
+            android:cursorVisible="true"
+            android:orientation="horizontal"
+            android:padding="15sp" />
+
+        <EditText
+            android:id="@+id/signupCheckCodeCodeTxt4"
+            android:layout_width="30sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/style_text_bottom_border_line"
+            android:cursorVisible="true"
+            android:orientation="horizontal"
+            android:padding="15sp" />
+
+        <EditText
+            android:id="@+id/signupCheckCodeCodeTxt5"
+            android:layout_width="30sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/style_text_bottom_border_line"
+            android:cursorVisible="true"
+            android:orientation="horizontal"
+            android:padding="15sp" />
+
+        <EditText
+            android:id="@+id/signupCheckCodeCodeTxt6"
+            android:layout_width="30sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/style_text_bottom_border_line"
+            android:cursorVisible="true"
+            android:orientation="horizontal"
+            android:padding="15sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/signupCheckCodeErrorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="유효한 인증 코드를 입력하세요"
+        android:textColor="@color/red_001"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="코드를 받지 못했습니까?"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/signupCheckCodeResendTxt"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupCheckCodeErrorText" />
+
+    <TextView
+        android:id="@+id/signupCheckCodeResendTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="코드 재전송"
+        android:textColor="@color/blue_001"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
+</androidx.constraintlayout.widget.ConstraintLayout>
