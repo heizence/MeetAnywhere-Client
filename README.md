@@ -1,20 +1,26 @@
+<h1 align="center">MeetAnywhere-Client</h1>
+<div align="center">
+
+  <b>Zoom 클론 코딩 프로젝트</b>
+
+  <br/>
+  
 <img width="1073" alt="meetanywhere_demo" src="https://github.com/heizence/MeetAnywhere-Client/assets/47074893/f168a2cb-e3ac-4ecd-85f8-bd19d785ab4c">
 
-# MeetAnywhere-Client
-Zoom 클론 코딩 프로젝트
+<span>Loved the project? Please consider [donating](https://paypal.me/abhisheknaiidu) to help it improve!</span>
 
+</div>
 
-
-## Table of contents
-- [About]()
+## Contents
+- [About](#about)
   - [Built with](#built-with)
-- [Prerequisites]()
-- [Installation]()
-- [Usage]()
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
 
 ## About
 
-화상회의 서비스 Zoom 의 모바일 앱을 비슷하게 만들어 보는 클론 코딩 프로젝트입니다. Zoom 의 모든 기능을 다 구현하지는 않고 핵심적인 기능 위주로 구현하였습니다.
+화상회의 서비스 Zoom 의 Android 앱을 비슷하게 만들어 보는 클론 코딩 프로젝트입니다. Zoom 의 모든 기능을 다 구현하지는 않고 핵심적인 기능 위주로 구현하였습니다.
 
 본 repository 는 서비스의 Android 앱의 소스 코드를 포함하고 있습니다. 라이브 스트리밍을 위해 WebRTC 라이브러리를 사용하였고, Mesh(p2p) 방식에 따라 설계하였습니다.
 
