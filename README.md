@@ -7,7 +7,7 @@ Zoom 클론 코딩 프로젝트
 
 ## Table of contents
 - [About]()
-  - [Built with]
+  - [Built with](#built-with)
 - [Prerequisites]()
 - [Installation]()
 - [Usage]()
