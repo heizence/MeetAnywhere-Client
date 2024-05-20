@@ -1,6 +1,6 @@
 # MeetAnywhere-Client
 
-화상회의 서비스 Zoom 의 Android 앱을 비슷하게 만들어 보는 클론 코딩 프로젝트. Zoom 의 모든 기능을 다 구현하지는 않고 핵심적인 기능 위주로 구현하였다.
+화상회의 서비스 Zoom 의 Android 앱을 비슷하게 만들어 보는 클론 코딩 프로젝트.
 
 **본 Repository 는 Client side repository 임.** 
 
@@ -39,9 +39,9 @@ Repository 클론
 git clone https://github.com/heizence/MeetAnywhere-Client
 ```
 
-클론 후 Android Studio 에서 프로젝트 import 하기
+클론 후 Android Studio 에서 프로젝트 import 하기.
 
-root 디렉토리에 있는 local.properties 파일에 다음 값들 추가하기
+root 디렉토리에 있는 local.properties 파일에 다음 값들 추가하기.
 
 ```
 # 차례대로,
@@ -50,7 +50,7 @@ root 디렉토리에 있는 local.properties 파일에 다음 값들 추가하�
 # stun 서버 url
 # turn 서버 url
 # turn 서버 사용 시 등록한 이름
-# turn 서버 사용 시 등록한 암호
+# turn 서버 사용 시 등록한 암호
 
 LOCAL_IP="x.x.x.x"
 PRODUCTION_IP="x.x.x.x"
@@ -60,7 +60,7 @@ TURN_username="username"
 TURN_password="password"
 ```
 
-추가 후, build.gradle(:app) 파일에 설정 추가하기
+추가 후, build.gradle(:app) 파일에 설정 추가하기.
 
 ```
 ...
