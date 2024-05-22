@@ -71,10 +71,10 @@
         <entry key="app/src/main/res/layout/screen_join_conference.xml" value="0.2734375" />
         <entry key="app/src/main/res/layout/screen_join_conference_room.xml" value="0.4125" />
         <entry key="app/src/main/res/layout/screen_join_conference_signedin.xml" value="0.18981481481481483" />
-        <entry key="app/src/main/res/layout/screen_main_activity.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/screen_main_activity.xml" value="0.25" />
         <entry key="app/src/main/res/layout/screen_reissue_password.xml" value="0.27076923076923076" />
         <entry key="app/src/main/res/layout/screen_signedin_main.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/screen_signin.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/screen_signin.xml" value="0.33" />
         <entry key="app/src/main/res/layout/screen_signup.xml" value="0.3425925925925926" />
         <entry key="app/src/main/res/layout/screen_signup_check_code.xml" value="0.30364583333333334" />
         <entry key="app/src/main/res/layout/screen_signup_form.xml" value="0.3046875" />
@@ -89,7 +89,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

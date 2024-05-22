@@ -12,7 +12,7 @@
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2023-12-24T03:46:58.694989Z" />
+    <timeTargetWasSelectedWithDropDown value="2024-05-12T13:26:33.994829Z" />
     <multipleDevicesSelectedInDropDown value="true" />
     <targetsSelectedWithDialog>
       <Target>
@@ -20,7 +20,7 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="$USER_HOME$/.android/avd/Device2.avd" />
+            <value value="$USER_HOME$/.android/avd/Device1.avd" />
           </Key>
         </deviceKey>
       </Target>
