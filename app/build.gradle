@@ -2,13 +2,17 @@ plugins {
     id 'com.android.application'
 }
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
+
 android {
     compileSdk 33
     // for webRTC configuration
-    sourceSets.main {
-        jniLibs.srcDir 'libs'
-        jni.srcDirs = [] //disable automatic ndk-build call
-    }
+//    sourceSets.main {
+//        jniLibs.srcDir 'libs'
+//        jni.srcDirs = [] //disable automatic ndk-build call
+//    }
     buildFeatures {
         dataBinding true
     }
@@ -19,6 +23,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "LOCAL_IP", localProperties['LOCAL_IP'])
+        buildConfigField("String", "PRODUCTION_IP", localProperties['PRODUCTION_IP'])
+        buildConfigField("String", "STUN_URL", localProperties['STUN_URL'])
+        buildConfigField("String", "TURN_URL", localProperties['TURN_URL'])
+        buildConfigField("String", "TURN_username", localProperties['TURN_username'])
+        buildConfigField("String", "TURN_password", localProperties['TURN_password'])
     }
 
     buildTypes {
@@ -53,14 +64,6 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
     // webRTC
-
-    //implementation files('libs/autobanh.jar')
-    //implementation files('libs/base_java.jar')
-    //implementation files('libs/libjingle_peerconnection.jar')
-
-    // for test
-    //implementation "io.getstream:stream-webrtc-android:1.1.1"
-    //implementation 'org.webrtc:google-webrtc:1.0.1.0.32006'
     implementation 'com.mesibo.api:webrtc:1.0.5'
 
     // cameraX
