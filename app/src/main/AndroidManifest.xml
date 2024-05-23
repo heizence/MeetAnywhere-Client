@@ -63,7 +63,7 @@
             android:exported="true">
         </activity>
         <activity android:name=".Activities.delete_account"></activity>
-        <activity android:name=".Activities.edit_name"></activity>
+        <activity android:name=".Activities.update_name"></activity>
         <activity android:name=".Activities.reissue_password"></activity>
         <activity android:name=".Activities.update_password"></activity>
         <activity android:name=".Activities.conference_room"></activity>

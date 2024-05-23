@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.content.Intent;
 import android.os.Bundle;
 import android.content.Context;
 import android.util.Log;
@@ -15,13 +14,12 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.example.meetanywhere.Modules.Sha256_hash;
 import com.example.meetanywhere.Modules.dialog_confirm;
 import com.example.meetanywhere.Modules.httpRequestAPIs;
 import com.google.android.material.textfield.TextInputEditText;
 import com.example.meetanywhere.R;
 
-public class edit_name extends AppCompatActivity {
+public class update_name extends AppCompatActivity {
     private String screenName = "[ACTIVITY]:";  //  Fragment 일 경우 FRAGMENT 로 할 수도 있음
     private String tag_check = screenName + "[CHECK]";  // 특정 값을 확인할 때 사용
     private String tag_execute = screenName + "[EXECUTE]";  // 매서드나 다른 실행 가능한 코드를 실행할 때 사용
@@ -38,7 +36,7 @@ public class edit_name extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.screen_edit_name);
+        setContentView(R.layout.screen_update_name);
 
         // 필요한 부분에 선언
         sharedPref = getSharedPreferences(getString(R.string.sharedPreferenceMain), MODE_PRIVATE);
@@ -85,7 +83,7 @@ public class edit_name extends AppCompatActivity {
             }
         }
         String userId = sharedPref.getString(getString(R.string.store_U_Id), "");
-        httpRequestAPIs.editName(userId, name, new Callee_success(), new Callee_failed());
+        httpRequestAPIs.updateName(userId, name, new Callee_success(), new Callee_failed());
     }
 
     public final TextWatcher textWatcher = new TextWatcher() {
