@@ -12,6 +12,7 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.meetanywhere.Activities.main_activity;   // 앱 실행 시 가장 먼저 실행되는 Activity
+import com.example.meetanywhere.BuildConfig;
 import com.example.meetanywhere.R;
 import com.google.gson.Gson;
 
@@ -53,17 +54,13 @@ public class httpRequestAPIs {
     public static String tag_execute = screenName + "[EXECUTE]";  // 매서드나 다른 실행 가능한 코드를 실행할 때 사용
     public static String tag_event = screenName + "[EVENT]";  // 특정 이벤트 발생을 확인할 때 사용
 
-    public static String emulator_ipAddress = "10.0.2.2";   // 에뮬레이터 private ip 주소
+    public static boolean isProduction = false;   // 배포 여부(local 서버로 테스트 시 false, 배포된 remote 서버 이용할 시 true)get
+    public static String ipAddressToUse = isProduction ? BuildConfig.PRODUCTION_IP : BuildConfig.LOCAL_IP;
 
-    public static boolean isHome = false;   // 재택근무 여부
-    public static boolean isProduction = true;   // 배포 여부(local 서버로 테스트 시 false, 배포된 remote 서버 이용할 시 true)
+    public static String SERVER_URL = "http://" + ipAddressToUse + "/";  // Main Server, Socket Server 모두 포함
+    //public static String MAIN_SERVER_URL = "http://" + ipAddressToUse + "/";
 
-    public static String ipAddressToUse = isProduction ? secretKeys.REMOTE_IP_ADDRESS : secretKeys.LOCAL_IP_ADDRESS;
-    public static String MAIN_SERVER_URL = "http://" + ipAddressToUse;  // Main PHP server 주소
-    public static Boolean isEmulator = com.example.meetanywhere.Modules.checkIsEmulator.check();
-
-    public static String webRTC_Signaling_Server_URL = "http://" + secretKeys.LOCAL_IP_ADDRESS + ":8082/";    // WebRTC signaling server 주소(for test)
-    //public static String webRTC_Signaling_Server_URL = "http://" + ipAddressToUse + "/webRTC_signaling_server";    // WebRTC signaling server 주소
+    //public static String webRTC_Signaling_Server_URL = "http://" + BuildConfig.LOCAL_IP + "/";    // WebRTC signaling server 주소(for test)
 
     private static void sendGetRequest(
             // 파라미터 순서 함부로 바꾸지 말 것!
@@ -77,12 +74,13 @@ public class httpRequestAPIs {
         Context applicationContext = main_activity.getContextOfApplication();    // Context from main activity.
         RequestQueue queue = Volley.newRequestQueue(applicationContext);    // 요청 전송을 위한 RequestQueue 생성
 
-        String url = MAIN_SERVER_URL + "/main_server/" + path + ".php" + params;  // 요청을 보내줄 URL 주소
-        String authToken = "Bearer " + new JWT_Token().token;
+        String url = SERVER_URL + path + params;  // 요청을 보내줄 URL 주소
+        //String authToken = "Bearer " + new JWT_Token().token;
+        String authToken = new JWT_Token().token;
         Log.d(tag_check, "check authToken : " + authToken);
 
         Map<String, String> headers = new HashMap<>();
-        headers.put("Authorization", authToken);
+        headers.put("authorization", authToken);
 
         // RequestQueue 에 추가해 줄 요청 객체 생성
         // 요청 실패 시 실행해 줄 매서드
@@ -99,20 +97,26 @@ public class httpRequestAPIs {
                     // http 요청 보낸 activity 에서 정의한 성공 콜백 실행하기
                     callerSuccess.register(calleeSuccess, responseObj);
                 }, error -> {
-            if (error.networkResponse != null) {
-                Log.d(tag_check, "onError : " + error);
-            } else {
-                int statusCode = error.networkResponse.statusCode;
+            Log.d(tag_check, "onError : " + error);
+            if (error != null) {
+                Log.d(tag_check, "error.networkResponse : " + error.networkResponse);
 
-                // 잘못된 JWT 로 요청 시도 시 에러 발생시키기
-                if (statusCode == 401) {
-                    System.out.println("## [HTTP API] 401 unauthorized. 잘못된 요청입니다!");
-                } else {
-                    // 요청이 실패일 경우
-                    // http 요청 보낸 activity 에서 정의한 실패 콜백 실행하기
-                    callerFailed.register(calleeFailed, statusCode);
+                if (error.networkResponse != null) {
+                    int statusCode = error.networkResponse.statusCode;
+
+                    // 잘못된 JWT 로 요청 시도 시 에러 발생시키기
+                    if (statusCode == 401) {
+                        Log.d(tag_check, statusCode + " unauthorized. 잘못된 요청");
+                        //dialog_confirm.show(applicationContext, "에러가 발생하였습니다.", null);
+                    } else {
+                        // 요청이 실패일 경우
+                        // http 요청 보낸 activity 에서 정의한 실패 콜백 실행하기
+                        Log.d(tag_check, statusCode + " 요청 실패");
+                        callerFailed.register(calleeFailed, statusCode);
+                    }
                 }
             }
+            //dialog_confirm.show(applicationContext, "에러가 발생하였습니다.", null);
         }) {
             @Override
             public Map<String, String> getHeaders() {
@@ -145,12 +149,14 @@ public class httpRequestAPIs {
         Context applicationContext = main_activity.getContextOfApplication();    // Context from main activity.
         RequestQueue queue = Volley.newRequestQueue(applicationContext);    // 요청 전송을 위한 RequestQueue 생성
 
-        String url = MAIN_SERVER_URL + "/main_server/" + path + ".php";  // 요청을 보내줄 URL 주소
-        String authToken = "Bearer " + new JWT_Token().token;
+        String url = SERVER_URL + path;  // 요청을 보내줄 URL 주소
+
+        //String authToken = "Bearer " + new JWT_Token().token;
+        String authToken = new JWT_Token().token;
         Log.d(tag_check, "check authToken : " + authToken);
 
         Map<String, String> headers = new HashMap<>();
-        headers.put("Authorization", authToken);
+        headers.put("authorization", authToken);
 
         // RequestQueue 에 추가해 줄 요청 객체 생성
         // 요청 실패 시 실행해 줄 매서드
@@ -159,6 +165,7 @@ public class httpRequestAPIs {
                 response -> {
                     Log.d(tag_check, "onResponse : " + response);
                     // string 형식의 응답을 사용 가능한 객체 형식으로 변환
+
                     Gson gson = new Gson();
                     ResponseObject responseObj = gson.fromJson(response, ResponseObject.class);
 
@@ -168,29 +175,26 @@ public class httpRequestAPIs {
                 }, error -> {
             Log.d(tag_check, "onError : " + error);
             if (error != null) {
+                Log.d(tag_check, "error.networkResponse : " + error.networkResponse);
                 if (error.networkResponse != null) {
-                    Log.d(tag_check, "error.networkResponse : " + error.networkResponse);
-                } else {
-                    Log.d(tag_check, "error is null");
-                    return;
+                    int statusCode = error.networkResponse.statusCode;
+
+                    // 잘못된 JWT 로 요청 시도 시 에러 발생시키기
+                    if (statusCode == 401) {
+                        Log.d(tag_check, statusCode + " unauthorized. 잘못된 요청");
+                    } else {
+                        // 요청이 실패일 경우
+                        // http 요청 보낸 activity 에서 정의한 실패 콜백 실행하기
+                        Log.d(tag_check, statusCode + " 요청 실패");
+                        callerFailed.register(calleeFailed, statusCode);
+                    }
                 }
             }
-            int statusCode = error.networkResponse.statusCode;
-
-            // 잘못된 JWT 로 요청 시도 시 에러 발생시키기
-            if (statusCode == 401) {
-                Log.d(tag_check, statusCode + " unauthorized. 잘못된 요청");
-                dialog_confirm.show(applicationContext, "에러가 발생하였습니다.", null);
-            } else {
-                // 요청이 실패일 경우
-                // http 요청 보낸 activity 에서 정의한 실패 콜백 실행하기
-                Log.d(tag_check, statusCode + " 요청 실패");
-                callerFailed.register(calleeFailed, statusCode);
-            }
-
+            //dialog_confirm.show(applicationContext.getApplicationContext(), "에러가 발생하였습니다.", null);
         }) {
             @Override
             protected Map<String, String> getParams() {
+                Log.d(tag_check, "POST getParams : " + params);
                 return params;
             }
 
@@ -298,8 +302,8 @@ public class httpRequestAPIs {
     // http 요청 후 받는 응답 객체 생성
     // 서버에서 정의된 응답 객체 형식과 맞아야 됨! 변경할 때 서버 쪽도 꼭 같이 확인하기
     public static class ResponseObject {
-        public String message;
-        public String statusCode;
+        //public String message;
+        //public String statusCode;
 
         /*
         서버에서 응답으로 받을 때 data 의 최초 형태는 string 임.
@@ -307,9 +311,10 @@ public class httpRequestAPIs {
         */
         public String data;
 
-        public ResponseObject(String messageInput, String statusCodeInput, String dataInput) {
-            this.message = messageInput;
-            this.statusCode = statusCodeInput;
+        public ResponseObject(String dataInput) {
+            Log.d(tag_check, "dataInput : " + dataInput);
+            //this.message = messageInput;
+            //this.statusCode = statusCodeInput;
             this.data = dataInput;
         }
     }
@@ -347,15 +352,6 @@ public class httpRequestAPIs {
                 new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
     }
 
-    // 비밀번호 변경
-    public static void editPassword(String newPassword, Callee_success calleeSuccess, Callee_failed calleeFailed) {
-        RequestObject obj = new RequestObject();
-        //obj.addKeyValuePair("token", new JWT_Token().token);
-        obj.addKeyValuePair("newPassword", newPassword);
-        sendPostRequest("app/users/editPassword", obj.getKeyValuePairs(),
-                new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
-    }
-
     // 이메일로 인증번호 보내기
     public static void sendVerificationCode(String email, Callee_success calleeSuccess, Callee_failed calleeFailed) {
         RequestObject obj = new RequestObject();
@@ -374,19 +370,10 @@ public class httpRequestAPIs {
                 new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
     }
 
-    // 마이페이지 사용자 정보 불러오기(could be deprecated)
-    public static void getUserInfo(String studentId, Callee_success calleeSuccess, Callee_failed calleeFailed) {
-        RequestParams params = new RequestParams();
-        params.addKeyValuePair("studentId", String.valueOf(studentId));
-        sendGetRequest("app/users/getUserInfo", params.getParams(),
-                new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
-    }
-
     // 프로필 이미지 변경하기
-    public static void editProfileImg(String studentId, String imageFileString, Callee_success calleeSuccess, Callee_failed calleeFailed) {
-        RequestParams params = new RequestParams();
+    public static void editProfileImg(String userId, String imageFileString, Callee_success calleeSuccess, Callee_failed calleeFailed) {
         RequestObject obj = new RequestObject();
-        obj.addKeyValuePair("studentId", studentId);
+        obj.addKeyValuePair("userId", userId);
         obj.addKeyValuePair("imageFileString", imageFileString);
         sendPostRequest("app/users/editProfileImg", obj.getKeyValuePairs(),
                 new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
@@ -401,15 +388,15 @@ public class httpRequestAPIs {
     }
 
     // 이름 변경
-    public static void editName(String userId, String name, Callee_success calleeSuccess, Callee_failed calleeFailed) {
+    public static void updateName(String userId, String name, Callee_success calleeSuccess, Callee_failed calleeFailed) {
         RequestObject obj = new RequestObject();
         obj.addKeyValuePair("userId", userId);
         obj.addKeyValuePair("name", name);
-        sendPostRequest("app/users/editName", obj.getKeyValuePairs(),
+        sendPostRequest("app/users/updateName", obj.getKeyValuePairs(),
                 new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
     }
 
-    // 이름 변경
+    // 비밀번호 변경
     public static void updatePassword(String userId, String prevPassword, String newPassword, Callee_success calleeSuccess, Callee_failed calleeFailed) {
         RequestObject obj = new RequestObject();
         obj.addKeyValuePair("userId", userId);
@@ -429,7 +416,7 @@ public class httpRequestAPIs {
                 new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
     }
 
-    // 회의 종료 후 데이터 삭제 생성하기
+    // 회의 종료 후 데이터 삭제
     public static void deleteConferenceData(String conferenceId, Callee_success calleeSuccess, Callee_failed calleeFailed) {
         RequestObject obj = new RequestObject();
         obj.addKeyValuePair("conferenceId", conferenceId);
@@ -454,36 +441,8 @@ public class httpRequestAPIs {
                 new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
     }
 
-    // 방송 목록 불러오기(실시간, 지난 방송 모두 포함)
-    public static void getBroadCastData(int pageIndex, Callee_success calleeSuccess, Callee_failed calleeFailed) {
-        RequestParams params = new RequestParams();
-        params.addKeyValuePair("pageIndex", String.valueOf(pageIndex));
-        sendGetRequest("app/broadcast/getBroadCastData", params.getParams(),
-                new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
-    }
-
     /*****************************************************/
 
-    // 방송방 실시간 시청자 수 업데이트
-    public static void updateNumberOfWatchers(String roomId, int updatedNumberOfWatchers, Callee_success calleeSuccess, Callee_failed calleeFailed) {
-        RequestObject obj = new RequestObject();
-        obj.addKeyValuePair("roomId", roomId);
-        obj.addKeyValuePair("updatedNumberOfWatchers", String.valueOf(updatedNumberOfWatchers));
-        sendPostRequest("app/broadcast/updateNumberOfWatchers", obj.getKeyValuePairs(),
-                new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
-    }
-
-    // 방송방 실시간 채팅 내역 저장하기
-    public static void saveChatHistory(String roomId, String senderUserId, String chatMessage, int timeLapsedMillis, Callee_success calleeSuccess, Callee_failed calleeFailed) {
-        RequestObject obj = new RequestObject();
-        obj.addKeyValuePair("roomId", roomId);
-        obj.addKeyValuePair("senderUserId", senderUserId);
-        obj.addKeyValuePair("chatMessage", chatMessage);
-        obj.addKeyValuePair("timeLapsed", String.valueOf(timeLapsedMillis));
-
-        sendPostRequest("app/broadcast/saveChatHistory", obj.getKeyValuePairs(),
-                new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
-    }
 
     /************************** 테스트용 API 목록 **************************/
 
@@ -498,7 +457,8 @@ public class httpRequestAPIs {
 
     public static void postTest(Callee_success calleeSuccess, Callee_failed calleeFailed) {
         RequestObject obj = new RequestObject();
-        obj.addKeyValuePair("params", "value1");
+        obj.addKeyValuePair("params1", "value1");
+        obj.addKeyValuePair("params2", "value2");
         sendPostRequest("requestTest", obj.getKeyValuePairs(), new Caller_success(), calleeSuccess, new Caller_failed(), calleeFailed);
     }
 
