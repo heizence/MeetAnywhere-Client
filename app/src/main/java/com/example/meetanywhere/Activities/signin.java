@@ -25,7 +25,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class signin extends AppCompatActivity {
-    private String screenName = "[ACTIVITY]:";  //  Fragment 일 경우 FRAGMENT 로 할 수도 있음
+    private String screenName = "[ACTIVITY signin]:";  //  Fragment 일 경우 FRAGMENT 로 할 수도 있음
     private String tag_check = screenName + "[CHECK]";  // 특정 값을 확인할 때 사용
     private String tag_execute = screenName + "[EXECUTE]";  // 매서드나 다른 실행 가능한 코드를 실행할 때 사용
     private String tag_event = screenName + "[EVENT]";  // 특정 이벤트 발생을 확인할 때 사용
@@ -77,12 +77,6 @@ public class signin extends AppCompatActivity {
     }
 
     // 로그인 요청
-    public void signin2(View view) {
-        Intent intent = new Intent(context, signedin_main.class);
-        startActivity(intent);
-        finish();
-    }
-
     public void signin(View view) {
         String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";

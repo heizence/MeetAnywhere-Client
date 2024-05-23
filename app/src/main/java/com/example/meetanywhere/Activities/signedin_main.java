@@ -31,9 +31,6 @@ public class signedin_main extends AppCompatActivity {
                 case R.id.item_fragment_conference:
                     getSupportFragmentManager().beginTransaction().replace(R.id.mainFragmentView, new fragment_conference()).commit();
                     break;
-//                case R.id.item_fragment_book:
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.mainFragmentView, new fragment_book()).commit();
-//                    break;
                 case R.id.item_fragment_mypage:
                     getSupportFragmentManager().beginTransaction().replace(R.id.mainFragmentView, new fragment_mypage()).commit();
                     break;
@@ -55,12 +52,6 @@ public class signedin_main extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
-    }
-
-    // 비밀번호 변경 메뉴 클릭
-    public void onClickEditPassword(View view) {
-        Intent intent = new Intent(this, com.example.meetanywhere.Activities.edit_password.class);
-        startActivity(intent);
     }
 
     // 로그아웃 메뉴 클릭

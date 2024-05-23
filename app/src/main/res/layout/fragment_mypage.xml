@@ -32,7 +32,6 @@
         android:background="@drawable/style_mypage_each_menu"
         android:clickable="true"
         android:gravity="center"
-        android:onClick="onClickEditPassword"
         android:paddingTop="10sp"
         android:paddingBottom="10sp"
         app:layout_constraintStart_toStartOf="parent"

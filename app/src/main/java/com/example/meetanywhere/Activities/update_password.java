@@ -97,8 +97,10 @@ public class update_password extends AppCompatActivity {
                     }
                 }
             }
+
+            String hashedPassword = Sha256_hash.hexString(newPassword);
             String userId = sharedPref.getString(getString(R.string.store_U_Id), "");
-            httpRequestAPIs.updatePassword(userId, prevPassword, newPassword, new Callee_success(), new Callee_failed());
+            httpRequestAPIs.updatePassword(userId, prevPassword, hashedPassword, new Callee_success(), new Callee_failed());
         } else {
             dialog_confirm.show(context, "새 비밀번호가 일치하지 않습니다.", null);
         }

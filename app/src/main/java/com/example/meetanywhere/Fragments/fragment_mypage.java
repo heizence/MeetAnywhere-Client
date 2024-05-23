@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.meetanywhere.Activities.delete_account;
-import com.example.meetanywhere.Activities.edit_name;
+import com.example.meetanywhere.Activities.update_name;
 import com.example.meetanywhere.Activities.update_password;
 import com.example.meetanywhere.Modules.dialog_confirm;
 import com.example.meetanywhere.Modules.dialog_edit_profile_img;
@@ -117,7 +117,7 @@ public class fragment_mypage extends Fragment {
             startActivity(intent);
         });
         editNameMenu.setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), edit_name.class);
+            Intent intent = new Intent(getActivity(), update_name.class);
             startActivity(intent);
 
         });

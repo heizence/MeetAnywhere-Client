@@ -31,8 +31,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,9 +39,8 @@ import com.example.meetanywhere.Adapters.Adapter_conf_each_chat_message;
 import com.example.meetanywhere.Adapters.Adapter_conf_each_participants;
 import com.example.meetanywhere.Adapters.Adapter_each_host_candidate;
 import com.example.meetanywhere.Adapters.Part_conf_each_participant;
-import com.example.meetanywhere.Adapters.Part_each_participant_stream;
+import com.example.meetanywhere.BuildConfig;
 import com.example.meetanywhere.Fragments.fragment_conference_main_video;
-import com.example.meetanywhere.Fragments.fragment_conference_whiteboard;
 import com.example.meetanywhere.Modules.CustomViewPager;
 import com.example.meetanywhere.Modules.Sha256_hash;
 import com.example.meetanywhere.Modules.dialog_conf_password_input;
@@ -72,7 +69,6 @@ import org.webrtc.SoftwareVideoEncoderFactory;
 import org.webrtc.RtpReceiver;
 import org.webrtc.SdpObserver;
 import org.webrtc.SessionDescription;
-import org.webrtc.VideoCapturer;
 import org.webrtc.VideoDecoderFactory;
 import org.webrtc.VideoEncoderFactory;
 import org.webrtc.VideoTrack;
@@ -89,7 +85,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class conference_room extends AppCompatActivity implements conference_room2 {
+public class conference_room extends AppCompatActivity {
     private final String screenName = "[ACTIVITY conference_room]:";  //  Fragment 일 경우 FRAGMENT 로 할 수도 있음
     private String tag_check = screenName + "[CHECK]";  // 특정 값을 확인할 때 사용
     private String tag_execute = screenName + "[EXECUTE]";  // 매서드나 다른 실행 가능한 코드를 실행할 때 사용
@@ -947,16 +943,16 @@ public class conference_room extends AppCompatActivity implements conference_roo
         //Log.d(tag_check, "check PeerConnection : " + peerConnection);
         ArrayList<PeerConnection.IceServer> iceServers = new ArrayList<>();
 
-        String URL_STUN = "stun:stun.l.google.com:19305";
+        String URL_STUN = BuildConfig.STUN_URL;
         iceServers.add(new PeerConnection.IceServer(URL_STUN));
 
-        String URL_coTURN = "turn:3.37.128.14:3478";
-        String coTURN_username = "doheon";
-        String coTURN_password = "_G7B+AH5";
+        String URL_TURN = BuildConfig.TURN_URL;
+        String TURN_username = BuildConfig.TURN_username;
+        String TURN_password = BuildConfig.TURN_password;
 
-        PeerConnection.IceServer turnServer = new PeerConnection.IceServer(URL_coTURN, coTURN_username, coTURN_password);
+        PeerConnection.IceServer turnServer = new PeerConnection.IceServer(URL_TURN, TURN_username, TURN_password);
         Log.d(tag_check, "turnServer : " + turnServer);
-        iceServers.add(new PeerConnection.IceServer(URL_coTURN, coTURN_username, coTURN_password));
+        iceServers.add(new PeerConnection.IceServer(URL_TURN, TURN_username, TURN_password));
         Log.d(tag_check, "iceServers : " + iceServers);
 
         PeerConnection.RTCConfiguration rtcConfig = new PeerConnection.RTCConfiguration(iceServers);
@@ -1110,13 +1106,13 @@ public class conference_room extends AppCompatActivity implements conference_roo
         String URL_STUN = "stun:stun.l.google.com:19305";
         iceServers.add(new PeerConnection.IceServer(URL_STUN));
 
-        String URL_coTURN = "turn:3.37.128.14:3478";
-        String coTURN_username = "doheon";
-        String coTURN_password = "_G7B+AH5";
+        String URL_TURN = "turn:3.37.128.14:3478";
+        String TURN_username = "doheon";
+        String TURN_password = "_G7B+AH5";
 
-        PeerConnection.IceServer turnServer = new PeerConnection.IceServer(URL_coTURN, coTURN_username, coTURN_password);
+        PeerConnection.IceServer turnServer = new PeerConnection.IceServer(URL_TURN, TURN_username, TURN_password);
         Log.d(tag_check, "turnServer : " + turnServer);
-        iceServers.add(new PeerConnection.IceServer(URL_coTURN, coTURN_username, coTURN_password));
+        iceServers.add(new PeerConnection.IceServer(URL_TURN, TURN_username, TURN_password));
         Log.d(tag_check, "iceServers : " + iceServers);
 
         PeerConnection.RTCConfiguration rtcConfig = new PeerConnection.RTCConfiguration(iceServers);
@@ -1686,7 +1682,7 @@ public class conference_room extends AppCompatActivity implements conference_roo
             mOptions.query += "&conferenceId=" + localVar_conferenceId;
             Log.d(tag_check, "setSocket mOptions query : " + mOptions.query);
 
-            String signalingServer_URL = httpRequestAPIs.webRTC_Signaling_Server_URL;
+            String signalingServer_URL = httpRequestAPIs.SERVER_URL;
             Log.d(tag_check, "check signalingServer_URL : " + signalingServer_URL);
 
             mSocket = IO.socket(signalingServer_URL, mOptions);

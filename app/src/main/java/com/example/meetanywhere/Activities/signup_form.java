@@ -20,7 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.example.meetanywhere.R;
 
 public class signup_form extends AppCompatActivity {
-    private String screenName = "[ACTIVITY]:";  //  Fragment 일 경우 FRAGMENT 로 할 수도 있음
+    private String screenName = "[ACTIVITY signup_form]:";  //  Fragment 일 경우 FRAGMENT 로 할 수도 있음
     private String tag_check = screenName + "[CHECK]";  // 특정 값을 확인할 때 사용
     private String tag_execute = screenName + "[EXECUTE]";  // 매서드나 다른 실행 가능한 코드를 실행할 때 사용
     private String tag_event = screenName + "[EVENT]";  // 특정 이벤트 발생을 확인할 때 사용
@@ -91,9 +91,10 @@ public class signup_form extends AppCompatActivity {
                 public void call(int statusCode) {
                     Log.d(tag_check, "failed statusCode : " + statusCode);
 
-                    if (statusCode == 404) {
-                        dialog_confirm.show(context, "잘못된 이메일 또는 비밀번호입니다.", null);
-                    } else {
+                    if (statusCode == 400) {
+                        dialog_confirm.show(context, "이미 가입된 계정입니다.", null);
+                    }
+                    else {
                         dialog_confirm.show(context, "요청 중 에러가 발생하였습니다. 잠시 후 다시 시도해 주세요.", null);
                     }
                 }
